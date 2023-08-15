@@ -1,2 +1,2 @@
 # leetcode
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+To improve my Js and Python skills, I solve algorithms using both languages
