@@ -3,26 +3,30 @@
  * @return {number}
  */
 var trap = function (height) {
-    let lMax = []
-    let rMax = []
-    let cur = 0
-    let water =0
-    for (let i = 0; i < height.length - 1; i++) {
-        lMax.push(cur)
-        cur = Math.max(cur, height[i])
-    }
-    cur = 0
-    for (let i = height.length - 1; i > -1; i--) {
-        rMax.push(cur)
-        cur = Math.max(cur, height[i])
-    }
-    rMax.reverse()
-    for(let i=0;i < height.length - 1; i++)
+    const len = height.length;
+    let lMax= 0 
+    let rMax= 0
+    let left = 0
+    let right= len -1
+    let water = 0 
+
+    while (left < right)
     {
-        min = Math.min(lMax[i],rMax[i])
-        if(min - height[i] > 0)
+        if (height[left] < height[right])
         {
-            water = water + min - height[i]
+            if(height[left] > lMax)
+                lMax = height[left]
+            else
+                water += lMax - height[left]
+            left++
+        }
+        else
+        {
+            if (height[right] > rMax)
+                rMax = height[right]
+            else
+                water += rMax - height[right]
+            right--
         }
     }
     return water
